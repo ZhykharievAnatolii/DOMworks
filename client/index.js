@@ -1,6 +1,6 @@
 // методы для поиска DOM-елементов
 
-const listItem=document.querySelector(' ');
+const listItem=document.querySelector('header');
 
 // document.querySelectorAll()- мертвая коллекция в ней есть forEach
 // document.getElementById()- возвращает один елемент
@@ -40,7 +40,7 @@ const listItem=document.querySelector(' ');
 // link.closest('.container');
 // link.matches('a');
 
-const newItem=document.createElement('li');
+const newItem=document.createElement('div');
 newItem.innerHTML=`
 <span>Logo</span>
 <figure><img src="" alt="">
@@ -50,9 +50,15 @@ Caption
 </figure>
 `;
 listItem.parentElement.append(newItem);
-listItem.replaceWith(newItem);
-newItem.parentElement.append(listItem);
+// listItem.replaceWith(newItem);
+// newItem.parentElement.append(listItem);
 
 // about events
+
+// on....- только одно событие
+// addEventListener()- можно добавть сразу несколько обработчиков
+// Можно также прописать в теге html
+
+
 
 
