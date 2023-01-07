@@ -23,4 +23,28 @@ link.href;
 
 link.classList
 link.classList.add('first', 'last');
-link.classList.remove('first')
+link.classList.remove('first');
+// link.classList.toggle('test')=== добавляет класс если не было, уделяет если был
+link.classList.contains('test');
+
+link.getAttribute('test');
+link.setAttributeNode();
+link.removeAttribute();
+// link.hasAttribute();- проверяет наличие
+
+
+link.dataset.action='test';
+link.dataset.action1='test1';
+delete link.dataset.action1
+
+link.closest('.container');
+link.matches('a');
+
+const newItem=document.createElement('li');
+newItem.innerHTML=`
+<span>Logo</span>
+<figure><img src="" alt="">
+<figcaption></figcaption>
+</figure>
+`
+
