@@ -1,6 +1,6 @@
 // методы для поиска DOM-елементов
 
-const listItem=document.querySelector('header');
+// const listItem=document.querySelector('header');
 
 // document.querySelectorAll()- мертвая коллекция в ней есть forEach
 // document.getElementById()- возвращает один елемент
@@ -18,7 +18,7 @@ const listItem=document.querySelector('header');
 
 // listItem.id
 
-const link= listItem.firstElementChild;
+// const link= listItem.firstElementChild;
 // link.href;
 //
 // link.classList
@@ -40,16 +40,16 @@ const link= listItem.firstElementChild;
 // link.closest('.container');
 // link.matches('a');
 
-const newItem=document.createElement('div');
-newItem.innerHTML=`
-<span>Logo</span>
-<figure><img src="" alt="">
-<figcaption>
-Caption
-</figcaption>
-</figure>
-`;
-listItem.parentElement.append(newItem);
+// const newItem=document.createElement('div');
+// newItem.innerHTML=`
+// <span>Logo</span>
+// <figure><img src="" alt="">
+// <figcaption>
+// Caption
+// </figcaption>
+// </figure>
+// `;
+// listItem.parentElement.append(newItem);
 // listItem.replaceWith(newItem);
 // newItem.parentElement.append(listItem);
 
@@ -99,24 +99,24 @@ listItem.parentElement.append(newItem);
 //     console.log('cath')
 // })
 // console.log('end');
-function timer(time){
-    return new Promise((resolve, reject)=>{
-        setTimeout(()=>{
-            resolve();
-        },time);
-    })
-};
-timer(1000).then(()=>{
-    console.log('then');
-    Promise.resolve().then(()=>{
-        console.log('inner then')
-    });
-    throw new Error();
-}).catch(err=>{
-    console.log('cath')
-});
-console.log('end');
-timer();
+// function timer(time){
+//     return new Promise((resolve, reject)=>{
+//         setTimeout(()=>{
+//             resolve();
+//         },time);
+//     })
+// };
+// timer(1000).then(()=>{
+//     console.log('then');
+//     Promise.resolve().then(()=>{
+//         console.log('inner then')
+//     });
+//     throw new Error();
+// }).catch(err=>{
+//     console.log('cath')
+// });
+// console.log('end');
+// timer();
 
 // function resolver() {
 //     Promise.resolve().then(()=>{
@@ -124,6 +124,37 @@ timer();
 //     })
 //
 // }--- в таком случае перестанут работать обработчики, постоянно по кругу будут микрозадачи попадать в стек
+
+
+
+document.addEventListener('DOMContentLoaded',()=>{
+
+    const list=document.querySelector('ul');
+
+    fetch('http://localhost:3030/users')
+        .then((response)=>{
+            return response.json();
+        })
+        .then((users)=>{
+            
+        });
+    
+    function renderItems(users) {
+        list.innerHTML='';
+        users.forEach(({id,name})=>{
+            const listItem=document.createElement('li');
+
+            listItem.innerHTML=`
+            ${name}
+            <button data-id="${id}">X</button>
+            
+            `;
+            list.append(listItem)
+        })
+    }
+
+});
+
 
 
 
