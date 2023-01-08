@@ -147,7 +147,24 @@ document.addEventListener('DOMContentLoaded',()=>{
         .catch(()=>{
             console.log('error')
         });
-    
+
+    list.onclick=({target})=>{
+        if(target.matches('button')){
+            const {id}=target.dataset;
+            target.disabled=true;
+            fetch('http://localhost:3030/users/${id}',{
+                method:'DELETE',
+            })
+                .then(()=>{
+                    target.parentElement.remove();
+                })
+                .catch((err)=>{
+                    console.log('error to delete');
+                    target.disabled=false;
+                })
+        }
+    }
+
     function renderItems(users) {
         list.innerHTML='';
         users.forEach(({id,name})=>{
