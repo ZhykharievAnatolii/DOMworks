@@ -135,8 +135,17 @@ document.addEventListener('DOMContentLoaded',()=>{
         .then((response)=>{
             return response.json();
         })
-        .then((users)=>{
-            
+        .then((data)=>{
+            const users=Object.entries(data).map(([id,{name}])=>{
+            return {
+                name,
+                id,
+            }
+            });
+            renderItems(users)
+        })
+        .catch(()=>{
+            console.log('error')
         });
     
     function renderItems(users) {
@@ -149,7 +158,7 @@ document.addEventListener('DOMContentLoaded',()=>{
             <button data-id="${id}">X</button>
             
             `;
-            list.append(listItem)
+            list.append(listItem);
         })
     }
 
